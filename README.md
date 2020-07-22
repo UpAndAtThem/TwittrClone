@@ -12,12 +12,25 @@ interface Post {
   retweetedPostId?: number;
   userName: string;
   handle: string;
-  date: Date,
-  tweetText: string,
-  image?: string | null,
-  tweetContentUrl?: string | null,
-  retweetCount: number,
-  favoritesCount: number,
-  replies?: Post[]
+  date: Date;
+  tweetText: string;
+  image?: string | null;
+  tweetContentUrl?: string | null;
+  retweetCount: number;
+  favoritesCount: number;
+  replies?: Post[];
+}
+```
+
+### User: a user is all of the data that is tracked of the end users meta data. This is used to persist info about the end user.
+
+``` javascript
+interface User {
+  userId: number;
+  userName: string;
+  handle: string;
+  dateCreated: Date;
+  avatarSrc?: string | null;
+  email: string;
 }
 ```
