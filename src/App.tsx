@@ -2,6 +2,7 @@ import React, { Component, MouseEvent, MouseEventHandler } from 'react';
 import styles from './App.module.css';
 import SideBar from './Components/Sidebar/Sidebar';
 import Home from './Containers/Home/Home';
+import User from './Interfaces/User';
 
 import {
   Switch,
@@ -11,6 +12,15 @@ import {
 class App extends Component {
   makeTweet: MouseEventHandler = (event: MouseEvent) => {
     return null;
+  };
+
+  user: User = {
+    userId: 1,
+    userName: 'Jason Nelson',
+    handle: '@json_nlson',
+    dateCreated: new Date(2015),
+    avatarSrc: 'https://pbs.twimg.com/profile_images/482747445512638464/PMVg3H2y_400x400.jpeg',
+    email: 'billburr@gmail.com'
   };
 
   mockPosts = [
@@ -46,25 +56,25 @@ class App extends Component {
     }
   ];
 
-render() {
+  render() {
 
-  return (
-    <div className={styles.GridLayout}>
-      <SideBar />
-      <Switch>
-        <Route exact path="/home">
-          <Home makeTweet={this.makeTweet} mockPosts={ this.mockPosts } />
-        </Route>
-        <Route path="/users">
+    return (
+      <div className={styles.GridLayout}>
+        <SideBar />
+        <Switch>
+          <Route exact path="/home">
+            <Home makeTweet={this.makeTweet} mockPosts={this.mockPosts} />
+          </Route>
+          <Route path="/users">
 
-        </Route>
-        <Route path="/">
+          </Route>
+          <Route path="/">
 
-        </Route>
-      </Switch>
-    </div>
-  );
-}
+          </Route>
+        </Switch>
+      </div>
+    );
+  }
 }
 
 export default App;

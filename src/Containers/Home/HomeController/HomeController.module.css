@@ -3,6 +3,7 @@
 }
 
 .Controller {
+  width: 600px;
   border-top: 0.5px solid rgb(230, 236, 240);
   border-left: 0.5px solid rgb(230, 236, 240);
   border-right: 0.5px solid rgb(230, 236, 240);
@@ -22,7 +23,7 @@
 
 .ControlsWrapper {
   padding: 0px 15px;
-  width: 500px;
+  /* width: 500px; */
 }
 
 .ControllerHeader > *:last-child {
@@ -72,14 +73,18 @@
 }
 
 .TweetControls {
+  padding-top: 9px;
+  border-top: 1px solid rgb(218, 218, 218);
   display: flex;
   flex-direction: row;
   align-content: space-between;
   align-items: center;
   justify-content: space-between;
+  width: 500px;
 }
 
 .TweetButton {
+  margin-right: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
