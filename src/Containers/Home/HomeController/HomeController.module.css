@@ -6,7 +6,7 @@
   width: 600px;
   box-sizing: border-box;
   border-top: 0.5px solid rgb(230, 236, 240);
-  border-left: 0.5px solid rgb(230, 236, 240);
+  /* border-left: 0.5px solid rgb(230, 236, 240); */
   border-right: 0.5px solid rgb(230, 236, 240);
   border-bottom: 10px solid rgb(230, 236, 240);
 }

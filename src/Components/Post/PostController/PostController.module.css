@@ -1,0 +1,11 @@
+.PostController {
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+}
+
+.PostController svg {
+  width: 18.75px;
+  height: 18.75px;
+  fill: rgb(101, 119, 134);
+}

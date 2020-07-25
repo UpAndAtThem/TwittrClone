@@ -55,9 +55,8 @@ a {
 
 .Sidebar {
   box-sizing: border-box;
-  /* width: 350px; */
-  overflow: scroll;
   height: 100vh;
+  border-right: 1px solid rgb(230, 236,241);
 }
 
 .SidebarIcons svg {
@@ -129,4 +128,10 @@ a {
   margin-top: 10px;
   font-size: 15px;
   font-weight: 800;
+}
+
+@media screen and (max-height: 600px) {
+  .Sidebar {
+    overflow: scroll;
+  }
 }
