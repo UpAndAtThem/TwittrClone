@@ -4,7 +4,7 @@ import PostsFeed from '../../Components/PostsFeed/PostsFeed';
 import Post from '../../Interfaces/Post';
 
 interface Props {
-  makeTweet: Function,
+  makeTweetHandler: Function,
   mockPosts: Post[]
 }
 
@@ -12,8 +12,8 @@ class Home extends Component<Props, {}> {
   render() {
     return (
       <div>
-        <HomeController />
-        <PostsFeed />
+        <HomeController {...this.props} />
+        <PostsFeed {...this.props} />
       </div>
     );
   }

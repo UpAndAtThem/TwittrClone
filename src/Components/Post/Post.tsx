@@ -1,46 +1,14 @@
 import React from 'react';
 import styles from './Post.module.css';
 import PostController from './PostController/PostController';
+import PostInterface from '../../Interfaces/Post';
 
-const PostsFeed = (props: any) => {
-  let mockPosts = [
-    {
-      id: 1,
-      userId: 1,
-      isRetweet: false,
-      reTweetedPostId: null,
-      userName: 'Jason Nelson',
-      handle: '@json_nlson',
-      date: new Date(),
-      tweetText: 'Hello World!!!!1',
-      image: 'default_profile_normal.png',
-      tweetContentUrl: null,
-      retweetCount: 5,
-      favoritesCount: 14,
-      replies: []
-    },
-    {
-      id: 1,
-      userId: 2,
-      isRetweet: false,
-      reTweetedPostId: null,
-      userName: 'Erika Wannigman',
-      handle: '@e_wan',
-      date: new Date(),
-      tweetText: 'This is my first tweet!',
-      image: 'default_profile_normal.png',
-      tweetContentUrl: null,
-      retweetCount: 5,
-      favoritesCount: 14,
-      replies: []
-    }
-  ];
+const Post = (props: PostInterface) => {
+  let post = { ...props };
 
-  console.log(mockPosts[0]);
-
-  let JSXPosts = mockPosts.map((post) => (
+  let mockPost =
     <div key={post.id} className={styles.Post}>
-      <img className={styles.Avatar} src={post.image} alt="" />
+      <img className={styles.Avatar} src={post.image} alt="avatar" />
       <div className={styles.PostBody}>
         <div className={styles.PostHead}>
           <div className={styles.UserInfo}>
@@ -56,13 +24,11 @@ const PostsFeed = (props: any) => {
         </div>
       </div>
     </div>
-  ));
+
 
   return (
-    <div>
-      {JSXPosts}
-    </div>
+    mockPost
   );
 }
 
-export default PostsFeed;
+export default Post;

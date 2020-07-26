@@ -7,8 +7,8 @@ interface Post {
   handle: string;
   date: Date;
   tweetText: string;
-  image?: string | null;
-  tweetContentUrl?: string | null;
+  image?: string;
+  tweetContentUrl?: string;
   retweetCount: number;
   favoritesCount: number;
   replies?: Post[];

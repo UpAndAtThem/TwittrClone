@@ -10,7 +10,9 @@ import {
 } from "react-router-dom";
 
 class App extends Component {
-  makeTweet: MouseEventHandler = (event: MouseEvent) => {
+  makeTweetHandler: MouseEventHandler = (event: MouseEvent) => {
+    console.log(this);
+    console.log(event);
     return null;
   };
 
@@ -33,14 +35,13 @@ class App extends Component {
       handle: '@json_nlson',
       date: new Date(),
       tweetText: 'Hello World!!!!1',
-      image: null,
-      tweetContentUrl: null,
+      image: 'default_profile_normal.png',
       retweetCount: 5,
       favoritesCount: 14,
       replies: []
     },
     {
-      id: 1,
+      id: 2,
       userId: 2,
       isRetweet: false,
       reTweetedPostId: null,
@@ -48,8 +49,7 @@ class App extends Component {
       handle: '@e_wan',
       date: new Date(),
       tweetText: 'Hello World!!!!1',
-      image: null,
-      tweetContentUrl: null,
+      image: 'burr_profile_avatar.jpeg',
       retweetCount: 5,
       favoritesCount: 14,
       replies: []
@@ -63,7 +63,7 @@ class App extends Component {
         <SideBar />
         <Switch>
           <Route exact path="/home">
-            <Home makeTweet={this.makeTweet} mockPosts={this.mockPosts} />
+            <Home makeTweetHandler={this.makeTweetHandler} mockPosts={this.mockPosts} />
           </Route>
           <Route path="/users">
 
