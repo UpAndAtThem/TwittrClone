@@ -84,14 +84,14 @@
   width: 500px;
 }
 
-.TweetButton {
+input.TweetButton {
   display: block;
   margin-right: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 40px !important;
-  width: 80px !important;
+  height: 40px;
+  width: 80px;
   background-color: rgba(29,161,242,1.00);
   border-radius: 9999px;
   justify-self: flex-end;
