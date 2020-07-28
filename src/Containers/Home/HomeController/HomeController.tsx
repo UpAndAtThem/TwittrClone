@@ -1,10 +1,12 @@
 import React from 'react';
 import styles from './HomeController.module.css';
+import User from '../../../Interfaces/User';
 
 interface Props {
   makeTweetHandler?: ((event: any) => void);
-  tweetValue: string;
+  tweetInputPlaceholder: string;
   onChangeTweetInput: ((event: any) => void);
+  user: User;
 }
 
 const HomeController = (props: Props) => {
@@ -17,12 +19,12 @@ const HomeController = (props: Props) => {
         </div>
       </div>
       <div className={styles.TweetInputContainer}>
-        <div className={styles.ProfileAvatar}><img src="/default_profile_normal.png" alt="" /></div>
+        <div className={styles.ProfileAvatar}><img src={props.user.avatarSrc} alt="" /></div>
         <div className={styles.ControlsWrapper}>
           <form action="" onSubmit={props.makeTweetHandler}>
             <input
               onChange={props.onChangeTweetInput}
-              placeholder="What's Happening?"
+              placeholder={props.tweetInputPlaceholder}
               type="text"
               name="tweet"
               autoComplete='off'

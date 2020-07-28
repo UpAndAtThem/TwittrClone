@@ -3,7 +3,7 @@ interface User {
   userName: string;
   handle: string;
   dateCreated: Date;
-  avatarSrc?: string | null;
+  avatarSrc?: string;
   email: string;
 }
 
