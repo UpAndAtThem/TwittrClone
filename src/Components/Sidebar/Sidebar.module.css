@@ -132,6 +132,7 @@ a {
 
 @media screen and (max-height: 600px) {
   .Sidebar {
+    height: 100%;
     overflow: scroll;
   }
 }

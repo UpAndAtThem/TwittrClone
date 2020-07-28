@@ -14,7 +14,7 @@ interface State {
   tweetInputPlaceholder: string;
   tweetInputValue: string;
   user: User;
-  tweets: Array<Post>
+  tweets: Array<Post>;
 }
 
 class App extends Component<{}, State> {
@@ -27,6 +27,9 @@ class App extends Component<{}, State> {
       user: this.getUser(),
       tweets: this.getTweets(this.getUser().userId)
     };
+  }
+
+  componentDidMount() {
   }
 
   getUser: any = (): User => {
@@ -101,8 +104,8 @@ class App extends Component<{}, State> {
       replies: []
     };
 
-    this.setState({tweets: this.state.tweets.concat([newTweet])});
-    this.setState({tweetInputValue: ''});
+    this.setState({ tweets: this.state.tweets.concat([newTweet]) });
+    this.setState({ tweetInputValue: '' });
 
     return null;
   };
