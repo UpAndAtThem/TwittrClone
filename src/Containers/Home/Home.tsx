@@ -4,15 +4,17 @@ import PostsFeed from '../../Components/PostsFeed/PostsFeed';
 import Post from '../../Interfaces/Post';
 
 interface Props {
-  makeTweetHandler: Function,
-  mockPosts: Post[]
+  makeTweetHandler: ((event: any) => void),
+  mockPosts: Post[],
+  tweetValue: string,
+  onChangeTweetInput: ((event: any) => void)
 }
 
 class Home extends Component<Props, {}> {
   render() {
     return (
       <div>
-        <HomeController {...this.props} />
+        <HomeController onChangeTweetInput={this.props.onChangeTweetInput} tweetValue={this.props.tweetValue} makeTweetHandler={this.props.makeTweetHandler} />
         <PostsFeed {...this.props} />
       </div>
     );

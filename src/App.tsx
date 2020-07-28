@@ -1,4 +1,4 @@
-import React, { Component, MouseEvent, MouseEventHandler } from 'react';
+import React, { Component } from 'react';
 import styles from './App.module.css';
 import SideBar from './Components/Sidebar/Sidebar';
 import Home from './Containers/Home/Home';
@@ -9,10 +9,26 @@ import {
   Route
 } from "react-router-dom";
 
-class App extends Component {
-  makeTweetHandler: MouseEventHandler = (event: MouseEvent) => {
-    console.log(this);
-    console.log(event);
+interface State {
+  tweetValue: string
+}
+
+class App extends Component<{}, State> {
+  constructor(props: any) {
+    super(props);
+
+    this.state = {
+      tweetValue: 'Whats Happening?'
+    };
+  }
+
+  onChangeTweetInput: any = (event: any) => {
+    this.setState({ tweetValue: event.target.value });
+  }
+
+  makeTweetHandler: any = (event: any) => {
+    event.preventDefault();
+    console.log(this.state);
     return null;
   };
 
@@ -63,7 +79,11 @@ class App extends Component {
         <SideBar />
         <Switch>
           <Route exact path="/home">
-            <Home makeTweetHandler={this.makeTweetHandler} mockPosts={this.mockPosts} />
+            <Home
+              onChangeTweetInput={this.onChangeTweetInput}
+              tweetValue={this.state.tweetValue}
+              makeTweetHandler={this.makeTweetHandler}
+              mockPosts={this.mockPosts} />
           </Route>
           <Route path="/users">
 
