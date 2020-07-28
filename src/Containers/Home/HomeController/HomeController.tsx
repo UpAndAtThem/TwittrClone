@@ -5,6 +5,7 @@ import User from '../../../Interfaces/User';
 interface Props {
   makeTweetHandler?: ((event: any) => void);
   tweetInputPlaceholder: string;
+  tweetInputValue: string;
   onChangeTweetInput: ((event: any) => void);
   user: User;
 }
@@ -23,6 +24,7 @@ const HomeController = (props: Props) => {
         <div className={styles.ControlsWrapper}>
           <form action="" onSubmit={props.makeTweetHandler}>
             <input
+              value={props.tweetInputValue}
               onChange={props.onChangeTweetInput}
               placeholder={props.tweetInputPlaceholder}
               type="text"

@@ -12,6 +12,7 @@ import {
 
 interface State {
   tweetInputPlaceholder: string;
+  tweetInputValue: string;
   user: User;
   tweets: Array<Post>
 }
@@ -22,6 +23,7 @@ class App extends Component<{}, State> {
 
     this.state = {
       tweetInputPlaceholder: 'Whats Happening?',
+      tweetInputValue: '',
       user: this.getUser(),
       tweets: this.getTweets(this.getUser().userId)
     };
@@ -78,12 +80,30 @@ class App extends Component<{}, State> {
   };
 
   onChangeTweetInput: any = (event: any) => {
-    this.setState({ tweetInputPlaceholder: event.target.value });
+    this.setState({ tweetInputValue: event.target.value });
   }
 
   makeTweetHandler: any = (event: any) => {
     event.preventDefault();
-    console.log(this.state);
+
+    let newTweet = {
+      id: Math.max(...this.state.tweets.map(tweet => tweet.id)) + 1,
+      userId: 1,
+      isRetweet: false,
+      retweetedPostId: undefined,
+      userName: this.state.user.userName,
+      handle: this.state.user.handle,
+      date: new Date(),
+      tweetText: this.state.tweetInputValue,
+      image: this.state.user.avatarSrc,
+      retweetCount: Math.floor((Math.random() * 50)),
+      favoritesCount: Math.floor((Math.random() * 150)),
+      replies: []
+    };
+
+    this.setState({tweets: this.state.tweets.concat([newTweet])});
+    this.setState({tweetInputValue: ''});
+
     return null;
   };
 
@@ -96,6 +116,7 @@ class App extends Component<{}, State> {
             <Home
               onChangeTweetInput={this.onChangeTweetInput}
               tweetInputPlaceholder={this.state.tweetInputPlaceholder}
+              tweetInputValue={this.state.tweetInputValue}
               makeTweetHandler={this.makeTweetHandler}
               mockPosts={this.state.tweets}
               user={this.state.user}

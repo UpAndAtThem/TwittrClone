@@ -8,6 +8,7 @@ interface Props {
   makeTweetHandler: ((event: any) => void),
   mockPosts: Post[],
   tweetInputPlaceholder: string,
+  tweetInputValue: string
   onChangeTweetInput: ((event: any) => void),
   user: User
 }
@@ -20,6 +21,7 @@ class Home extends Component<Props, {}> {
           user={this.props.user}
           onChangeTweetInput={this.props.onChangeTweetInput}
           tweetInputPlaceholder={this.props.tweetInputPlaceholder}
+          tweetInputValue={this.props.tweetInputValue}
           makeTweetHandler={this.props.makeTweetHandler}
         />
         <PostsFeed mockPosts={this.props.mockPosts} />
