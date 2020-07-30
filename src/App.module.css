@@ -1,6 +1,7 @@
 .GridLayout {
+  height: 100%;
   display: grid;
-  grid-template-columns: 350px 600px auto;
+  grid-template-columns: 305px 565px auto;
 }
 
 .App {

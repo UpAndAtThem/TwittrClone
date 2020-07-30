@@ -8,14 +8,15 @@ a {
 }
 
 .NameWidget {
+  width: 200px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-left: 75px;
+  margin-left: 58px;
   margin-bottom: 10px;
   padding: 10px;
-  position: sticky;
-  top: 100vh;
+  position: fixed;
+  bottom: 0;
 }
 
 .NameWidget:hover {
@@ -24,7 +25,8 @@ a {
   border-bottom-right-radius: 9999px;
   border-top-left-radius: 9999px;
   border-top-right-radius: 9999px;
-  width: fit-content;
+  width: 200px;
+  margin-right: 35px;
 }
 
 .NameWidget > svg {
@@ -55,20 +57,19 @@ a {
 
 .Sidebar {
   box-sizing: border-box;
-  height: 100vh;
+  height: 100%;
   border-right: 1px solid rgb(230, 236,241);
 }
 
 .SidebarIcons svg {
-  height: 29px;
+  height: 25px;
 }
 
 .SidebarIcons div {
   display: flex;
   align-items: center;
-  margin-left: 85px;
-  margin-right: 85px;
-  margin-bottom: 10px;
+  margin-left: 75px;
+  margin-bottom: 5px;
   font-weight: 700;
   font-size: 19px;
   height: 45px;
@@ -86,18 +87,19 @@ a {
   width: fit-content;
   padding: 0px 10px;
   box-sizing: border-box;
-  margin-left: 75px;
+  margin-left: 65px;
 }
 
 .SidebarIcons div > p {
   margin-left: 20px;
+  font-size: 0.95em;
 }
 
 .MainIcon {
   width: 29px;
   height: 29px;
   fill: rgba(29,161,242,1.00);
-  margin: 5px 0px 0px 75px;
+  margin: 5px 0px 0px 65px;
   padding: 10px
 }
 
@@ -107,10 +109,11 @@ a {
 }
 
 .TweetButton {
-  width: 216px;
-  height: 49px;
+  width: 190px;
+  height: 40px;
   margin-left: 75px;
   margin-bottom: 30px;
+  margin-top: 10px;
   text-align: center;
   color: white;
   background-color: rgba(29,161,242,1.00);
@@ -130,9 +133,15 @@ a {
   font-weight: 800;
 }
 
-@media screen and (max-height: 600px) {
+@media (max-height: 600px) {
+  .NameWidget {
+    position: relative;
+    top: 0;
+  }
+}
+
+@media (min-height: 601px) {
   .Sidebar {
     height: 100%;
-    overflow: scroll;
   }
 }

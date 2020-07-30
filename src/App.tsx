@@ -32,7 +32,7 @@ class App extends Component<{}, State> {
   componentDidMount() {
   }
 
-  getUser: any = (): User => {
+  getUser = (): User => {
     return (
       {
         userId: 1,
@@ -45,7 +45,7 @@ class App extends Component<{}, State> {
     )
   };
 
-  getTweets: any = (userId: number): Post[] | undefined => {
+  getTweets = (userId: number): Post[] => {
     if (userId) {
       return (
         [
@@ -80,13 +80,15 @@ class App extends Component<{}, State> {
         ]
       );
     }
+
+    return [];
   };
 
-  onChangeTweetInput: any = (event: any) => {
+  onChangeTweetInput = (event: any) => {
     this.setState({ tweetInputValue: event.target.value });
   }
 
-  makeTweetHandler: any = (event: any) => {
+  makeTweetHandler = (event: any) => {
     event.preventDefault();
 
     let newTweet = {
