@@ -12,7 +12,18 @@
   padding: 8px;
 }
 
-.PostController svg.Comment:hover {
+.PostController svg.Comment:hover,
+.PostController svg.Share:hover {
   background-color: rgb(223, 239, 249);
   fill: rgba(29,161,242,1.00);
+} 
+
+.PostController svg.Retweet:hover {
+  background-color: rgb(226, 242, 234);
+  fill: rgba(100, 195, 109, 1.00);
+}
+
+.PostController svg.Favorite:hover {
+  background-color: rgb(241, 225, 233);
+  fill: rgba(226, 64, 94, 1.00);
 }
