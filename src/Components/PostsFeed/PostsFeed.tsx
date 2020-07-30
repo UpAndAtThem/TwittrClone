@@ -5,12 +5,11 @@ interface Props {
   mockPosts: typeof Post[];
 };
 
-const PostsFeed = (props: any) => {
+const PostsFeed: React.FC<any> = (props: any) => {
   let JSXPosts = props.mockPosts.map((post: any) => {
     return (<Post key={post.id} {...post}></Post>);
   });
   
-
   return (
     JSXPosts
   );

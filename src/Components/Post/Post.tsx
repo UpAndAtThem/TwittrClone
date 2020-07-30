@@ -10,20 +10,20 @@ const Post = (props: PostInterface) => {
 
   const handleClose = () => show = false;
   const toggleShow = () => setShow(!show);
+  
   const handleShow = () => {
     const postElement = document.getElementById(String(post.id));
-
+    
     let position = postElement?.getBoundingClientRect();
 
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
     let x = position?.x! - 45;
-    let y = position?.y! + 20;
+    let y = position?.y! + 20 + scrollTop;
 
     let top = `${Math.floor(y)}px`;
     let left = `${Math.floor(x)}px`;
 
-    show = true;
-    console.log(top, left);
-  
     return <div style={{position: 'absolute', top: top, left: left, backgroundColor: 'white'}} className={styles.PostModal}><TweetModal postId={String(post.id)} handleClose={handleClose} /></div>
   };
 
