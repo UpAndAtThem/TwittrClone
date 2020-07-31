@@ -6,6 +6,7 @@ interface Props {
 };
 
 const PostsFeed: React.FC<any> = (props: any) => {
+  console.log('PostsFeed Renders');
   let JSXPosts = props.mockPosts.map((post: any) => {
     return (<Post key={post.id} {...post}></Post>);
   });

@@ -5,6 +5,7 @@ import PostInterface from '../../Interfaces/Post';
 import TweetModal from '../../UI/TweetModal/TweetModal';
 
 const Post = (props: PostInterface) => {
+  console.log('Post Renders');
   let post = { ...props };
   let [show, setShow] = useState(false);
 

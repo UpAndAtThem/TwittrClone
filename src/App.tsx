@@ -20,7 +20,7 @@ interface State {
 class App extends Component<{}, State> {
   constructor(props: any) {
     super(props);
-
+    console.log('App Component Renders');
     this.state = {
       tweetInputPlaceholder: 'Whats Happening?',
       tweetInputValue: '',
