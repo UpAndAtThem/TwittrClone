@@ -6,12 +6,6 @@ import PostInterface from '../../Interfaces/Post';
 const Post = (props: {post: PostInterface, handleShow: any}) => {
   console.log('Post Renders');
   let post = props.post;
-  let [show, setShow] = useState(false);
-
-  // const handleClose = () => show = false;
-  // const toggleShow = () => setShow(!show);
-  
-  let tweetModal = show ?  props.handleShow(post) : null;
 
   let mockPost =
     <div key={post.id} className={styles.Post}>
@@ -30,7 +24,6 @@ const Post = (props: {post: PostInterface, handleShow: any}) => {
           <PostController></PostController>
         </div>
       </div>
-      {tweetModal}
     </div>
 
 
