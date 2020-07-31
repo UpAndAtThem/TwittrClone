@@ -4,6 +4,7 @@ import SideBar from './Components/Sidebar/Sidebar';
 import Home from './Containers/Home/Home';
 import User from './Interfaces/User';
 import Post from './Interfaces/Post';
+import TweetModal from './UI/TweetModal/TweetModal';
 
 import {
   Switch,
@@ -11,6 +12,7 @@ import {
 } from "react-router-dom";
 
 interface State {
+  post: any;
   tweetInputPlaceholder: string;
   tweetInputValue: string;
   user: User;
@@ -22,12 +24,37 @@ class App extends Component<{}, State> {
     super(props);
     console.log('App Component Renders');
     this.state = {
+      post: undefined,
       tweetInputPlaceholder: 'Whats Happening?',
       tweetInputValue: '',
       user: this.getUser(),
       tweets: this.getTweets(this.getUser().userId)
     };
   }
+
+  handleShow = (e: any, post: any, styles: any) => {
+    if (!post) {
+      this.setState({post: undefined});
+    }
+    console.log('event', e);
+    console.log('post', post);
+
+    const postElement = document.getElementById(String(post.id));
+
+    let position = postElement?.getBoundingClientRect();
+
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    let x = position?.x! - 45;
+    let y = position?.y! + 20 + scrollTop;
+
+    let top = `${Math.floor(y)}px`;
+    let left = `${Math.floor(x)}px`;
+
+    this.setState({post: <TweetModal top={top} left={left} postId={String(post.id)} styles={styles} />});
+    // this.setState({ post: <div style={{ position: 'absolute', top: top, left: left, backgroundColor: 'white' }} className={styles.PostModal}><TweetModal postId={String(post.id)} /></div> });
+  };
+
 
   componentDidMount() {
   }
@@ -115,6 +142,7 @@ class App extends Component<{}, State> {
   render() {
     return (
       <div className={styles.GridLayout}>
+        {this.state.post}
         <SideBar />
         <Switch>
           <Route exact path="/home">
@@ -125,6 +153,7 @@ class App extends Component<{}, State> {
               makeTweetHandler={this.makeTweetHandler}
               mockPosts={this.state.tweets}
               user={this.state.user}
+              handleShow={this.handleShow}
             />
           </Route>
           <Route path="/users">

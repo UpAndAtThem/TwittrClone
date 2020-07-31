@@ -10,11 +10,13 @@ interface Props {
   tweetInputPlaceholder: string,
   tweetInputValue: string
   onChangeTweetInput: ((event: any) => void),
-  user: User
+  user: User,
+  handleShow: any
 }
 
 class Home extends Component<Props, {}> {
   render() {
+    console.log('Home Component Renders');
     return (
       <div>
         <HomeController
@@ -24,7 +26,7 @@ class Home extends Component<Props, {}> {
           tweetInputValue={this.props.tweetInputValue}
           makeTweetHandler={this.props.makeTweetHandler}
         />
-        <PostsFeed mockPosts={this.props.mockPosts} />
+        <PostsFeed handleShow={this.props.handleShow } mockPosts={this.props.mockPosts} />
       </div>
     );
   }
