@@ -1,7 +1,8 @@
 .Backdrop {
   position: absolute;
-  width: 100vw;
-  height: 100vh;
-  min-height: 100vh;
-  background-color: rgba(0,0,0,0.5);
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 1000;
 }

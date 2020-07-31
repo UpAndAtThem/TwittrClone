@@ -2,9 +2,11 @@ import React from 'react';
 import styles from './Backdrop.module.css';
 
 const Backdrop = (props: any) => {
-  console.log(props.children);
+  let bodyHeight = document.querySelector('body')?.offsetHeight || 0;
+  bodyHeight += 100;
+
   return (
-    <div className={styles.Backdrop}>
+    <div style={{height: bodyHeight}} onClick={() => props.handleShow()} className={styles.Backdrop}>
       {props.children}
     </div>
   );

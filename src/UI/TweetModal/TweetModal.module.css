@@ -1,5 +1,13 @@
-.TweetModal {
-  width: fit-content;
-  background-color: red;
+.TweetEditModal {
+  padding: 20px 10px;
+  border: 1px black solid;
+  background-color: white;
   z-index: 10;
+  border-radius: 5px;
+}
+
+.TweetEditModal div {
+  text-align: center;
+  width: 80%;
+  margin: auto;
 }

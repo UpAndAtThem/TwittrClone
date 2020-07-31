@@ -32,27 +32,25 @@ class App extends Component<{}, State> {
     };
   }
 
-  handleShow = (e: any, post: any, styles: any) => {
+  handleShow = (e?: any, post?: any, styles?: any, handleShow?: any) => {
     if (!post) {
       this.setState({post: undefined});
+      return undefined;
     }
-    console.log('event', e);
-    console.log('post', post);
-
+    let isUser = post.userId === this.state.user.userId ? true : false;
     const postElement = document.getElementById(String(post.id));
 
     let position = postElement?.getBoundingClientRect();
 
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-    let x = position?.x! - 45;
+    let x = position?.x! - 200;
     let y = position?.y! + 20 + scrollTop;
 
     let top = `${Math.floor(y)}px`;
     let left = `${Math.floor(x)}px`;
 
-    this.setState({post: <TweetModal top={top} left={left} postId={String(post.id)} styles={styles} />});
-    // this.setState({ post: <div style={{ position: 'absolute', top: top, left: left, backgroundColor: 'white' }} className={styles.PostModal}><TweetModal postId={String(post.id)} /></div> });
+    this.setState({post: <TweetModal isUser={isUser} top={top} left={left} postId={String(post.id)} styles={styles} handleShow={handleShow}/>});
   };
 
 
