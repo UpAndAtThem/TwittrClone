@@ -44,7 +44,7 @@ class App extends Component<{}, State> {
 
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-    let x = position?.x! - 200;
+    let x = position?.x! - 210;
     let y = position?.y! + 20 + scrollTop;
 
     let top = `${Math.floor(y)}px`;

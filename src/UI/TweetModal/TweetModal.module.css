@@ -1,13 +1,35 @@
 .TweetEditModal {
-  padding: 20px 10px;
-  border: 1px black solid;
+  box-shadow: rgba(101, 119, 134, 0.2) 0px 0px 15px, rgba(101, 119, 134, 0.15) 0px 0px 3px 1px;
   background-color: white;
   z-index: 10;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
 }
 
+.TweetEditModal svg {
+  margin-right: 10px;
+  fill: rgb(101, 119, 134);
+  height: 20px;
+  display: inline-block;
+  padding: 15px 0 15px 15px;
+}
+
+.TweetEditModal p {
+  font: 'Segoe UI';
+  margin: 0;
+  padding: 15px 15px 15px 0px;
+  width: 100%;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgb(20, 23, 26);
+  line-height: 19.86px;
+}
+
+
 .TweetEditModal div {
-  text-align: center;
-  width: 80%;
-  margin: auto;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  padding: 0;
 }
