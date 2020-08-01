@@ -2,22 +2,24 @@ import React from 'react';
 import Backdrop from '../Backdrop/Backdrop';
 import styles from './TweetModal.module.css';
 
-const TweetModal = (props: { isUser: boolean, postId: string, top: string, left: string, styles: any, handleShow: any }) => {
-  let modalPos = {top: props.top, left: props.left };
+const TweetModal = (props: { isUser: boolean, editTweet: any, postId: string, top: string, left: string, styles: any, handleShow: any }) => {
+  let modalPos = { top: props.top, left: props.left };
+
+  console.log(props.postId);
 
   if (props.isUser) {
-    modalPos.left = (Number(modalPos.left.replace(/\D/g,'')) + 45).toString() + 'px';
+    modalPos.left = (Number(modalPos.left.replace(/\D/g, '')) + 45).toString() + 'px';
   }
 
   let modalContent = props.isUser ?
     (
       <>
         <div>
-          <svg viewBox="0 0 24 24" className=""><g><path d="M20.746 5.236h-3.75V4.25c0-1.24-1.01-2.25-2.25-2.25h-5.5c-1.24 0-2.25 1.01-2.25 2.25v.986h-3.75c-.414 0-.75.336-.75.75s.336.75.75.75h.368l1.583 13.262c.216 1.193 1.31 2.027 2.658 2.027h8.282c1.35 0 2.442-.834 2.664-2.072l1.577-13.217h.368c.414 0 .75-.336.75-.75s-.335-.75-.75-.75zM8.496 4.25c0-.413.337-.75.75-.75h5.5c.413 0 .75.337.75.75v.986h-7V4.25zm8.822 15.48c-.1.55-.664.795-1.18.795H7.854c-.517 0-1.083-.246-1.175-.75L5.126 6.735h13.74L17.32 19.732z"></path><path d="M10 17.75c.414 0 .75-.336.75-.75v-7c0-.414-.336-.75-.75-.75s-.75.336-.75.75v7c0 .414.336.75.75.75zm4 0c.414 0 .75-.336.75-.75v-7c0-.414-.336-.75-.75-.75s-.75.336-.75.75v7c0 .414.336.75.75.75z"></path></g></svg>
+          <svg viewBox="0 0 24 24" className={styles.Delete}><g><path d="M20.746 5.236h-3.75V4.25c0-1.24-1.01-2.25-2.25-2.25h-5.5c-1.24 0-2.25 1.01-2.25 2.25v.986h-3.75c-.414 0-.75.336-.75.75s.336.75.75.75h.368l1.583 13.262c.216 1.193 1.31 2.027 2.658 2.027h8.282c1.35 0 2.442-.834 2.664-2.072l1.577-13.217h.368c.414 0 .75-.336.75-.75s-.335-.75-.75-.75zM8.496 4.25c0-.413.337-.75.75-.75h5.5c.413 0 .75.337.75.75v.986h-7V4.25zm8.822 15.48c-.1.55-.664.795-1.18.795H7.854c-.517 0-1.083-.246-1.175-.75L5.126 6.735h13.74L17.32 19.732z"></path><path d="M10 17.75c.414 0 .75-.336.75-.75v-7c0-.414-.336-.75-.75-.75s-.75.336-.75.75v7c0 .414.336.75.75.75zm4 0c.414 0 .75-.336.75-.75v-7c0-.414-.336-.75-.75-.75s-.75.336-.75.75v7c0 .414.336.75.75.75z"></path></g></svg>
           <p>Delete</p>
         </div>
-        <div>
-        <svg viewBox="0 0 24 24" className=""><g><path d="M20.75 22H3.25C2.01 22 1 20.99 1 19.75V4.25C1 3.01 2.01 2 3.25 2h17.5C21.99 2 23 3.01 23 4.25v15.5c0 1.24-1.01 2.25-2.25 2.25zM3.25 3.5c-.414 0-.75.337-.75.75v15.5c0 .413.336.75.75.75h17.5c.414 0 .75-.337.75-.75V4.25c0-.413-.336-.75-.75-.75H3.25z"></path><path d="M16.758 6.982h-5.806c-.414 0-.75.336-.75.75s.336.75.75.75h3.995L6.92 16.508c-.292.293-.292.768 0 1.06.147.147.34.22.53.22s.385-.072.53-.22l8.027-8.025v3.995c0 .414.336.75.75.75s.75-.336.75-.75V7.732c0-.414-.335-.75-.75-.75z"></path></g></svg>
+        <div onClick={() => props.editTweet(props.postId)}>
+          <svg viewBox="0 0 24 24" className=""><g><path d="M20.75 22H3.25C2.01 22 1 20.99 1 19.75V4.25C1 3.01 2.01 2 3.25 2h17.5C21.99 2 23 3.01 23 4.25v15.5c0 1.24-1.01 2.25-2.25 2.25zM3.25 3.5c-.414 0-.75.337-.75.75v15.5c0 .413.336.75.75.75h17.5c.414 0 .75-.337.75-.75V4.25c0-.413-.336-.75-.75-.75H3.25z"></path><path d="M16.758 6.982h-5.806c-.414 0-.75.336-.75.75s.336.75.75.75h3.995L6.92 16.508c-.292.293-.292.768 0 1.06.147.147.34.22.53.22s.385-.072.53-.22l8.027-8.025v3.995c0 .414.336.75.75.75s.75-.336.75-.75V7.732c0-.414-.335-.75-.75-.75z"></path></g></svg>
           <p>Edit</p>
         </div>
         <div>
@@ -55,7 +57,7 @@ const TweetModal = (props: { isUser: boolean, postId: string, top: string, left:
   return (
 
     <Backdrop handleShow={props.handleShow}>
-      <div className={styles.TweetEditModal} style={{position: 'absolute', ...modalPos}}>
+      <div className={styles.TweetEditModal} style={{ position: 'absolute', ...modalPos }}>
         {modalContent}
       </div>
     </Backdrop>

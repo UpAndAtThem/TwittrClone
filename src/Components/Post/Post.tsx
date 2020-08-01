@@ -3,12 +3,12 @@ import styles from './Post.module.css';
 import PostController from './PostController/PostController';
 import PostInterface from '../../Interfaces/Post';
 
-const Post = (props: {post: PostInterface, handleShow: any}) => {
+const Post = (props: {post: PostInterface, handleShow: any, editTweet: any}) => {
   console.log('Post Renders');
   let post = props.post;
 
   const tweetInfoHandler = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
-    props.handleShow(e, post, styles, props.handleShow);
+    props.handleShow(e, post, styles, props.handleShow, props.editTweet);
   }
 
   let mockPost =

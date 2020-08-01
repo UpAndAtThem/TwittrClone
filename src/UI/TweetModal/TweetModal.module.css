@@ -10,7 +10,7 @@
 .TweetEditModal svg {
   margin-right: 10px;
   fill: rgb(101, 119, 134);
-  height: 20px;
+  height: 25px;
   display: inline-block;
   padding: 15px 0 15px 15px;
 }
@@ -36,4 +36,8 @@
 
 .TweetEditModal div:hover {
   background-color: rgb(230, 236, 240, 0.5);
+}
+
+.TweetEditModal .Delete {
+  fill: red;
 }

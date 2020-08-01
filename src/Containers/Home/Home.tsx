@@ -11,7 +11,8 @@ interface Props {
   tweetInputValue: string
   onChangeTweetInput: ((event: any) => void),
   user: User,
-  handleShow: any
+  handleShow: any,
+  editTweet: any
 }
 
 class Home extends Component<Props, {}> {
@@ -26,7 +27,7 @@ class Home extends Component<Props, {}> {
           tweetInputValue={this.props.tweetInputValue}
           makeTweetHandler={this.props.makeTweetHandler}
         />
-        <PostsFeed handleShow={this.props.handleShow } mockPosts={this.props.mockPosts} />
+        <PostsFeed handleShow={this.props.handleShow } mockPosts={this.props.mockPosts} editTweet={this.props.editTweet} />
       </div>
     );
   }

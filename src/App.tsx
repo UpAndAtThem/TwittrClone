@@ -32,7 +32,13 @@ class App extends Component<{}, State> {
     };
   }
 
-  handleShow = (e?: any, post?: any, styles?: any, handleShow?: any) => {
+  editTweet = (postId: any) => {
+    console.log(postId);
+    console.log(this.state.tweets);
+    console.log(this);
+  };
+
+  handleShow = (e?: any, post?: any, styles?: any, handleShow?: any, editTweet?: any) => {
     if (!post) {
       this.setState({post: undefined});
       return undefined;
@@ -50,7 +56,7 @@ class App extends Component<{}, State> {
     let top = `${Math.floor(y)}px`;
     let left = `${Math.floor(x)}px`;
 
-    this.setState({post: <TweetModal isUser={isUser} top={top} left={left} postId={String(post.id)} styles={styles} handleShow={handleShow}/>});
+    this.setState({post: <TweetModal isUser={isUser} editTweet={editTweet} top={top} left={left} postId={String(post.id)} styles={styles} handleShow={handleShow}/>});
   };
 
 
@@ -152,6 +158,7 @@ class App extends Component<{}, State> {
               mockPosts={this.state.tweets}
               user={this.state.user}
               handleShow={this.handleShow}
+              editTweet={this.editTweet}
             />
           </Route>
           <Route path="/users">
