@@ -17,7 +17,7 @@ interface Props {
 
 class Home extends Component<Props, {}> {
   render() {
-    console.log('Home Component Renders');
+    // console.log('Home Component Renders');
     return (
       <div>
         <HomeController

@@ -12,6 +12,8 @@ interface Post {
   retweetCount: number;
   favoritesCount: number;
   replies?: Post[];
+  tweetVersions?: Post[];
+  tweetVersion?: number;
 }
 
 export default Post;

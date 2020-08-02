@@ -11,7 +11,7 @@ interface Props {
 }
 
 const HomeController = (props: Props) => {
-  console.log('HomeController Renders');
+  // console.log('HomeController Renders');
   return (
     <div className={styles.Controller}>
       <div className={styles.ControllerHeader}>

@@ -122,7 +122,7 @@ class App extends Component<{}, State> {
   makeTweetHandler = (event: any) => {
     event.preventDefault();
 
-    let newTweet = {
+    let newTweet: Post = {
       id: Math.max(...this.state.tweets.map(tweet => tweet.id)) + 1,
       userId: 1,
       isRetweet: false,
@@ -134,9 +134,14 @@ class App extends Component<{}, State> {
       image: this.state.user.avatarSrc,
       retweetCount: Math.floor((Math.random() * 50)),
       favoritesCount: Math.floor((Math.random() * 150)),
-      replies: []
+      replies: [],
+      tweetVersion: 1
     };
 
+    let tweetCopy = {...newTweet}
+    
+    newTweet.tweetVersions = [tweetCopy];
+    
     this.setState({ tweets: this.state.tweets.concat([newTweet]) });
     this.setState({ tweetInputValue: '' });
 

@@ -4,7 +4,7 @@ import PostController from './PostController/PostController';
 import PostInterface from '../../Interfaces/Post';
 
 const Post = (props: {post: PostInterface, handleShow: any, editTweet: any}) => {
-  console.log('Post Renders');
+  // console.log('Post Renders');
   let post = props.post;
 
   const tweetInfoHandler = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
