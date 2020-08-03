@@ -63,10 +63,3 @@
   display: flex;
   flex-direction: row;
 }
-
-.PostModal {
-  width: 100px;
-  height: 200px;
-  border: 1px solid black;
-  z-index: 99999999;
-}
