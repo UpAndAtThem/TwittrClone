@@ -22,7 +22,7 @@ interface State {
 class App extends Component<{}, State> {
   constructor(props: any) {
     super(props);
-    console.log('App Component Renders');
+    // console.log('App Component Renders');
     this.state = {
       post: undefined,
       tweetInputPlaceholder: 'Whats Happening?',
@@ -33,8 +33,6 @@ class App extends Component<{}, State> {
   }
 
   editTweet = (postId: any) => {
-    console.log(postId);
-    console.log(this.state.tweets);
     console.log(this);
   };
 

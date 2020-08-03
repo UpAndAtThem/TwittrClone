@@ -5,8 +5,6 @@ import styles from './TweetModal.module.css';
 const TweetModal = (props: { isUser: boolean, editTweet: any, postId: string, top: string, left: string, styles: any, handleShow: any }) => {
   let modalPos = { top: props.top, left: props.left };
 
-  console.log(props.postId);
-
   if (props.isUser) {
     modalPos.left = (Number(modalPos.left.replace(/\D/g, '')) + 45).toString() + 'px';
   }

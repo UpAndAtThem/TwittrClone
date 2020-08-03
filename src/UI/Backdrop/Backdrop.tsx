@@ -6,7 +6,6 @@ const Backdrop = (props: any) => {
   bodyHeight += 100;
 
   const onClose = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    console.log('backdrop');
     props.handleShow();
   }
 
