@@ -4,7 +4,6 @@ import User from '../../../Interfaces/User';
 
 interface Props {
   makeTweetHandler?: ((event: any) => void);
-  tweetInputPlaceholder: string;
   tweetInputValue: string;
   onChangeTweetInput: ((event: any) => void);
   user: User;
@@ -27,7 +26,7 @@ const HomeController = (props: Props) => {
             <input
               value={props.tweetInputValue}
               onChange={props.onChangeTweetInput}
-              placeholder={props.tweetInputPlaceholder}
+              placeholder="What's Happening?"
               type="text"
               name="tweet"
               autoComplete='off'
