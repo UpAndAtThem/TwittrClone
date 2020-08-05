@@ -6,7 +6,6 @@ import User from '../../Interfaces/User';
 
 interface Props {
   user: User,
-  handleShow: any,
 }
 
 interface State {
@@ -25,6 +24,27 @@ class Home extends Component<Props, State> {
       tweets: this.getTweets(this.props.user.userId)
     };
   }
+
+  // handleShow = (e?: any, post?: any, styles?: any, handleShow?: any, editTweet?: any, modalConfig?: any) => {
+  //   if (!post) {
+  //     this.setState({ post: undefined });
+  //     return undefined;
+  //   }
+  //   let isUser = post.userId === this.props.user.userId ? true : false;
+  //   const postElement = document.getElementById(String(post.id));
+
+  //   let position = postElement?.getBoundingClientRect();
+
+  //   let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+  //   let x = position?.x! - 210;
+  //   let y = position?.y! + 20 + scrollTop;
+
+  //   let top = `${Math.floor(y)}px`;
+  //   let left = `${Math.floor(x)}px`;
+
+  //   this.setState({ post: <TweetModal modalConfig={modalConfig} isUser={isUser} editTweet={editTweet} top={top} left={left} postId={String(post.id)} styles={styles} handleShow={handleShow} /> });
+  // };
 
   getTweets = (userId: number): Post[] => {
     if (userId) {
@@ -84,10 +104,10 @@ class Home extends Component<Props, State> {
       tweetVersion: 1
     };
 
-    let tweetCopy = {...newTweet}
-    
+    let tweetCopy = { ...newTweet }
+
     newTweet.tweetVersions = [tweetCopy];
-    
+
     this.setState({ tweets: this.state.tweets.concat([newTweet]) });
     this.setState({ tweetInputValue: '' });
 
@@ -118,7 +138,11 @@ class Home extends Component<Props, State> {
           tweetInputValue={this.state.tweetInputValue}
           makeTweetHandler={this.makeTweetHandler}
         />
-        <PostsFeed handleShow={this.props.handleShow } mockPosts={this.state.tweets} editTweet={this.editTweet} />
+        <PostsFeed
+          user={this.props.user}
+          mockPosts={this.state.tweets}
+          editTweet={this.editTweet}
+        />
       </div>
     );
   }
