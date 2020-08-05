@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Backdrop: React.FC<{onClick: any, styles: any}> = (props) => {
+const Backdrop: React.FC<{onClick: any, styles: any, className: any}> = (props) => {
   return(
-    <div style={props.styles} onClick={props.onClick}>
+    <div className={props.className} style={props.styles} onClick={props.onClick}>
       {props.children}
     </div>
   );
