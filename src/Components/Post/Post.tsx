@@ -32,8 +32,8 @@ const Post = (props: { post: PostInterface, editTweet: any, user: User }) => {
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
     let x = position?.x! - 210;
-    if (isUser) { x += 45 }
-    let y = position?.y! + 20 + scrollTop;
+    if (isUser) { x += 50 }
+    let y = position?.y! + 25 + scrollTop;
 
     let top = `${Math.floor(y)}px`;
     let left = `${Math.floor(x)}px`;

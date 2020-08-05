@@ -13,6 +13,10 @@
   width: 100%;
 }
 
+.Post:hover {
+  background-color: rgba(116, 116, 116, 0.028);
+}
+
 .PostController {
   margin-bottom: 10px;
 }
@@ -24,7 +28,9 @@
 }
 
 .PostBody {
+  box-sizing: border-box;
   padding-left: 10px;
+  padding-right: 0px;
 }
 
 .PostBody .PostContent {
@@ -42,7 +48,14 @@
 }
 
 .DownArrow {
+  border-radius: 50%;
+  padding: 6px;
   width: 15px;
+}
+
+.DownArrow:hover {
+  fill: rgba(29,161,242,1.00);
+  background-color: rgba(29,161,242, 0.10);
 }
 
 .Username {
