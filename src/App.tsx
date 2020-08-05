@@ -33,10 +33,14 @@ class App extends Component<{}, State> {
   }
 
   editTweet = (postId: any) => {
-    console.log(this);
+    let tweet = this.state.tweets.find(twt => {
+      return twt.id === Number(postId);
+    });
+
+    console.log(tweet);
   };
 
-  handleShow = (e?: any, post?: any, styles?: any, handleShow?: any, editTweet?: any) => {
+  handleShow = (e?: any, post?: any, styles?: any, handleShow?: any, editTweet?: any, modalConfig?: any) => {
     if (!post) {
       this.setState({post: undefined});
       return undefined;
@@ -54,7 +58,7 @@ class App extends Component<{}, State> {
     let top = `${Math.floor(y)}px`;
     let left = `${Math.floor(x)}px`;
 
-    this.setState({post: <TweetModal isUser={isUser} editTweet={editTweet} top={top} left={left} postId={String(post.id)} styles={styles} handleShow={handleShow}/>});
+    this.setState({post: <TweetModal modalConfig={modalConfig} isUser={isUser} editTweet={editTweet} top={top} left={left} postId={String(post.id)} styles={styles} handleShow={handleShow}/>});
   };
 
 
