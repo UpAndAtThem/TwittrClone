@@ -1,21 +1,27 @@
 import React from 'react';
+
 import Post from '../Post/Post';
+
+import {default as PostInterface} from '../../Interfaces/Post';
 import User from '../../Interfaces/User';
 
 interface Props {
   user: User;
-  mockPosts: typeof Post[];
-  editTweet: any;
+  posts: PostInterface[];
+  editTweetModalHandler: any;
 };
 
-const PostsFeed: React.FC<any> = (props: any) => {
+const PostsFeed: React.FC<Props> = (props: Props) => {
   // console.log('PostsFeed Renders');
-  let JSXPosts = props.mockPosts.map((post: any) => {
-    return (<Post user={props.user} key={post.id} post={post} editTweet={props.editTweet}></Post>);
+
+  let JSXPosts = props.posts.map((post: PostInterface) => {
+    return (<Post user={props.user} key={post.id} post={post} editTweetModalHandler={props.editTweetModalHandler}></Post>);
   });
   
   return (
-    JSXPosts
+    <>  
+      {JSXPosts}
+    </>
   );
 }
 

@@ -9,7 +9,6 @@ interface Props {
 }
 
 interface State {
-  post: any;
   tweetInputValue: string;
   tweets: any;
 }
@@ -19,32 +18,11 @@ class Home extends Component<Props, State> {
     super(props);
 
     this.state = {
-      post: undefined,
+      ...this.state,
       tweetInputValue: '',
       tweets: this.getTweets(this.props.user.userId)
     };
   }
-
-  // handleShow = (e?: any, post?: any, styles?: any, handleShow?: any, editTweet?: any, modalConfig?: any) => {
-  //   if (!post) {
-  //     this.setState({ post: undefined });
-  //     return undefined;
-  //   }
-  //   let isUser = post.userId === this.props.user.userId ? true : false;
-  //   const postElement = document.getElementById(String(post.id));
-
-  //   let position = postElement?.getBoundingClientRect();
-
-  //   let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-  //   let x = position?.x! - 210;
-  //   let y = position?.y! + 20 + scrollTop;
-
-  //   let top = `${Math.floor(y)}px`;
-  //   let left = `${Math.floor(x)}px`;
-
-  //   this.setState({ post: <TweetModal modalConfig={modalConfig} isUser={isUser} editTweet={editTweet} top={top} left={left} postId={String(post.id)} styles={styles} handleShow={handleShow} /> });
-  // };
 
   getTweets = (userId: number): Post[] => {
     if (userId) {
@@ -119,12 +97,19 @@ class Home extends Component<Props, State> {
     this.setState({ tweetInputValue: event.target.value });
   }
 
-  editTweet = (postId: any) => {
-    let tweet = this.state.tweets.find((twt: any) => {
-      return twt.id === Number(postId);
-    });
+  editTweetModalHandler = (post: Post) => {
+    const editTwtHandler =  (event: any) => {
+      let tweet = this.state.tweets.find((twt: any) => {
+        return twt.id === Number(post.id);
+      });
+      return tweet;
+      
+      // toggle the editTweetModal
+    };
 
-    console.log(tweet);
+    editTwtHandler.bind(this);
+
+    return editTwtHandler;
   };
 
 
@@ -140,8 +125,8 @@ class Home extends Component<Props, State> {
         />
         <PostsFeed
           user={this.props.user}
-          mockPosts={this.state.tweets}
-          editTweet={this.editTweet}
+          posts={this.state.tweets}
+          editTweetModalHandler={this.editTweetModalHandler}
         />
       </div>
     );

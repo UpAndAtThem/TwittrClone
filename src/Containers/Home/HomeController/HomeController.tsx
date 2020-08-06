@@ -3,9 +3,9 @@ import styles from './HomeController.module.css';
 import User from '../../../Interfaces/User';
 
 interface Props {
-  makeTweetHandler?: ((event: any) => void);
+  makeTweetHandler: ((event: React.FormEvent<HTMLFormElement>) => void);
   tweetInputValue: string;
-  onChangeTweetInput: ((event: any) => void);
+  onChangeTweetInput: ((event: React.ChangeEvent<HTMLInputElement>) => void);
   user: User;
 }
 
