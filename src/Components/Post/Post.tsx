@@ -22,9 +22,8 @@ const Post = (props: Props) => {
     setShowOptionsModal(!showOptionsModal);
   }
 
-  const editPostBackdropToggleHandler = (...props: any) => {
-    console.log(props);
-    if (props[0].target.className === 'backdrop') {
+  const editPostBackdropToggleHandler = (props: any) => {
+    if (props.target.className === 'backdrop') {
       setEditClicked(!editClicked);
     }
   }
@@ -39,6 +38,7 @@ const Post = (props: Props) => {
 
     let x = position?.x! - 210;
     if (isUser) { x += 50 }
+
     let y = position?.y! + 25 + scrollTop;
 
     let top = `${Math.floor(y)}px`;
@@ -51,7 +51,7 @@ const Post = (props: Props) => {
             <svg viewBox="0 0 24 24" className={styles.Delete}><g><path d="M20.746 5.236h-3.75V4.25c0-1.24-1.01-2.25-2.25-2.25h-5.5c-1.24 0-2.25 1.01-2.25 2.25v.986h-3.75c-.414 0-.75.336-.75.75s.336.75.75.75h.368l1.583 13.262c.216 1.193 1.31 2.027 2.658 2.027h8.282c1.35 0 2.442-.834 2.664-2.072l1.577-13.217h.368c.414 0 .75-.336.75-.75s-.335-.75-.75-.75zM8.496 4.25c0-.413.337-.75.75-.75h5.5c.413 0 .75.337.75.75v.986h-7V4.25zm8.822 15.48c-.1.55-.664.795-1.18.795H7.854c-.517 0-1.083-.246-1.175-.75L5.126 6.735h13.74L17.32 19.732z"></path><path d="M10 17.75c.414 0 .75-.336.75-.75v-7c0-.414-.336-.75-.75-.75s-.75.336-.75.75v7c0 .414.336.75.75.75zm4 0c.414 0 .75-.336.75-.75v-7c0-.414-.336-.75-.75-.75s-.75.336-.75.75v7c0 .414.336.75.75.75z"></path></g></svg>
             <p>Delete</p>
           </div>
-          <div onClick={props.editTweetModalHandler(post)}>
+          <div onClick={() => { setEditClicked(!editClicked) }}>
             <svg viewBox="0 0 24 24" className=""><g><path d="M20.75 22H3.25C2.01 22 1 20.99 1 19.75V4.25C1 3.01 2.01 2 3.25 2h17.5C21.99 2 23 3.01 23 4.25v15.5c0 1.24-1.01 2.25-2.25 2.25zM3.25 3.5c-.414 0-.75.337-.75.75v15.5c0 .413.336.75.75.75h17.5c.414 0 .75-.337.75-.75V4.25c0-.413-.336-.75-.75-.75H3.25z"></path><path d="M16.758 6.982h-5.806c-.414 0-.75.336-.75.75s.336.75.75.75h3.995L6.92 16.508c-.292.293-.292.768 0 1.06.147.147.34.22.53.22s.385-.072.53-.22l8.027-8.025v3.995c0 .414.336.75.75.75s.75-.336.75-.75V7.732c0-.414-.335-.75-.75-.75z"></path></g></svg>
             <p>Edit</p>
           </div>
@@ -87,9 +87,11 @@ const Post = (props: Props) => {
         </>
       )
 
+    const showOptionsModalHandler = (): void => setShowOptionsModal(!showOptionsModal);
+
     return (
-      <GenericModal className={'options-modal'} backdropOnClick={() => { setShowOptionsModal(!showOptionsModal) }} styles={{ backdropStyles: { position: 'absolute', top: 0, left: 0, height: '100vh', width: '100vw', backgroundColor: 'rgba(0,0,0,0)' } }}>
-        <div className={styles.TweetEditModal} style={{position: 'absolute', top: top, left: left, width: 'fit-content', margin: 'auto'}}>
+      <GenericModal className={'options-modal'} backdropOnClick={showOptionsModalHandler} styles={{ backdropStyles: { position: 'absolute', top: 0, left: 0, height: '100vh', width: '100vw', backgroundColor: 'rgba(0,0,0,0)' } }}>
+        <div className={styles.TweetEditModal} style={{ position: 'absolute', top: top, left: left, width: 'fit-content', margin: 'auto' }}>
           {optionsModalContent}
         </div>
       </GenericModal>);
@@ -116,15 +118,14 @@ const Post = (props: Props) => {
           <label htmlFor="editTweet">Edit Tweet</label>
 
           <textarea id="story" name="editTweet"
-            rows={5} cols={33}>
-            {post.tweetText}
+            rows={5} cols={33} defaultValue={post.tweetText}>
           </textarea>
         </div>
       </div>
     </GenericModal>
   );
 
-  let mockPost =
+  return (
     <div key={post.id} className={styles.Post}>
       <img className={styles.Avatar} src={post.image} alt="avatar" />
       <div className={styles.PostBody}>
@@ -144,10 +145,6 @@ const Post = (props: Props) => {
       {editClicked ? editModal : null}
       {showOptionsModal ? optionsModal() : null}
     </div>
-
-
-  return (
-    mockPost
   );
 }
 

@@ -31,7 +31,7 @@ class GenericModal extends React.Component<Props> {
   render() {
     return (
       ReactDOM.createPortal(
-        <GenericModalBackdrop className={`backdrop ${this.props.className}`} onClick={this.props.backdropOnClick} styles={this.props.styles.backdropStyles}>
+        <GenericModalBackdrop className="backdrop" onClick={this.props.backdropOnClick} styles={this.props.styles.backdropStyles}>
           {this.props.children}
         </GenericModalBackdrop>, this.el)
     )
