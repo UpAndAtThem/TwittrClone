@@ -36,6 +36,9 @@
 .PostBody .PostContent {
   margin-bottom: 25px;
   margin: 10px 0;
+  width: 100%;
+  border: none;
+  resize: none;
 }
 
 .PostHead {
@@ -56,6 +59,29 @@
 .DownArrow:hover {
   fill: rgba(29,161,242,1.00);
   background-color: rgba(29,161,242, 0.10);
+}
+
+.EditControls {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 0px;
+}
+
+.EditControls button {
+  display: block;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 37px;
+  background-color: rgba(29,161,242,1.00);
+  border-radius: 9999px;
+  justify-self: flex-end;
+  font-size: 0.95em;
+  font-weight: 900;
+  color: white;
+  border: none;
+  padding: 10px;
 }
 
 .Username {

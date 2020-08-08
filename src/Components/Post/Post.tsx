@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import styles from './Post.module.css';
 import PostController from './PostController/PostController';
 import PostInterface from '../../Interfaces/Post';
@@ -14,6 +14,7 @@ interface Props {
 const Post = (props: Props) => {
   // console.log('Post Renders');
   let post = props.post;
+  const postRef = useRef<HTMLDivElement>(null);
 
   const [editClicked, setEditClicked] = useState(false);
   const [showOptionsModal, setShowOptionsModal] = useState(false);
@@ -97,36 +98,39 @@ const Post = (props: Props) => {
       </GenericModal>);
   };
 
-  let editModal = (
-    <GenericModal className={'edit'} backdropOnClick={editPostBackdropToggleHandler} styles={{ backdropStyles: { zIndex: '2', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'absolute', top: 0, left: 0, height: '100vh', width: '100vw', backgroundColor: 'rgba(0,0,0,0.5)' } }}>
-      <div style={{ backgroundColor: 'white' }} key={post.id} className={styles.Post}>
-        <div>
-          <img className={styles.Avatar} src={post.image} alt="avatar" />
-          <div className={styles.PostBody}>
-            <div className={styles.PostHead}>
-              <div className={styles.UserInfo}>
-                <h1 className={styles.Username}>{post.userName}</h1>
-                <p className={styles.Handle}>{post.handle}</p>
-                <p className={styles.TimeTweeted}>{post.date.toDateString()}</p>
+  let editModal = () => {
+    let top = postRef.current?.offsetTop;
+    top = top? top - 17 : top;
+
+    return (
+      <GenericModal className={'edit'} backdropOnClick={editPostBackdropToggleHandler} styles={{ backdropStyles: { zIndex: '2', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'absolute', top: 0, left: 0, height: '100vh', width: '100vw', backgroundColor: 'rgba(0,0,0,0.5)' } }}>
+        <div style={{ backgroundColor: 'white', borderRadius: '10px', position: 'absolute', top: top, left: 'center' }} key={post.id}>
+          <div className={styles.Post} style={{ border: 'none' }}>
+            <img className={styles.Avatar} src={post.image} alt="avatar" />
+            <div className={styles.PostBody}>
+              <div className={styles.PostHead}>
+                <div className={styles.UserInfo}>
+                  <h1 className={styles.Username}>{post.userName}</h1>
+                  <p className={styles.Handle}>{post.handle}</p>
+                  <p className={styles.TimeTweeted}>{post.date.toDateString()}</p>
+                </div>
+                <svg id={String(post.id)} viewBox="0 0 24 24" onClick={() => { }} className={styles.DownArrow}><g><path d="M20.207 8.147c-.39-.39-1.023-.39-1.414 0L12 14.94 5.207 8.147c-.39-.39-1.023-.39-1.414 0-.39.39-.39 1.023 0 1.414l7.5 7.5c.195.196.45.294.707.294s.512-.098.707-.293l7.5-7.5c.39-.39.39-1.022 0-1.413z"></path></g></svg>
               </div>
-              <svg id={String(post.id)} viewBox="0 0 24 24" onClick={() => { }} className={styles.DownArrow}><g><path d="M20.207 8.147c-.39-.39-1.023-.39-1.414 0L12 14.94 5.207 8.147c-.39-.39-1.023-.39-1.414 0-.39.39-.39 1.023 0 1.414l7.5 7.5c.195.196.45.294.707.294s.512-.098.707-.293l7.5-7.5c.39-.39.39-1.022 0-1.413z"></path></g></svg>
+              <textarea className={styles.PostContent}>{post.tweetText}</textarea>
             </div>
-            <p className={styles.PostContent}>{post.tweetText}</p>
+          </div>
+          <div className={styles.EditControls}>
+            <button>Confirm Edit</button>
+            <button>Cancel</button>
           </div>
         </div>
-        <div>
-          <label htmlFor="editTweet">Edit Tweet</label>
+      </GenericModal>
+    )
+  }
 
-          <textarea id="story" name="editTweet"
-            rows={5} cols={33} defaultValue={post.tweetText}>
-          </textarea>
-        </div>
-      </div>
-    </GenericModal>
-  );
 
   return (
-    <div key={post.id} className={styles.Post}>
+    <div id="Post" ref={postRef} key={post.id} className={styles.Post}>
       <img className={styles.Avatar} src={post.image} alt="avatar" />
       <div className={styles.PostBody}>
         <div className={styles.PostHead}>
@@ -142,7 +146,7 @@ const Post = (props: Props) => {
           <PostController></PostController>
         </div>
       </div>
-      {editClicked ? editModal : null}
+      {editClicked ? editModal() : null}
       {showOptionsModal ? optionsModal() : null}
     </div>
   );

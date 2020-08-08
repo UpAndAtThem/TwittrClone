@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useEffect, EffectCallback} from 'react';
 
-const Backdrop: React.FC<{onClick: any, styles: any, className: any}> = (props) => {
-  return(
-    <div className={props.className} style={props.styles} onClick={props.onClick}>
+const Backdrop: React.FC<{ onClick: any, styles: any, className: any }> = (props) => {
+  const height = document.getElementById('root')?.clientHeight;
+
+  return (
+    <div className={props.className} style={{...props.styles, height: height }} onClick={props.onClick}>
       {props.children}
     </div>
   );
