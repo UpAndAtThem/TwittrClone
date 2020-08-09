@@ -32,13 +32,29 @@ const Post = (props: Props) => {
   let optionsModal = () => {
     let isUser = post.userId === props.user.userId ? true : false;
     const postElement = document.getElementById(String(post.id));
-
+    console.dir(postElement);
+    
+    // let bodyHeight = bodyEl?.clientHeight;
+    let bodyElHeight = document.querySelector('body')?.clientHeight;
+    
+    console.log('body height V');
+    console.log(bodyElHeight);
     let position = postElement?.getBoundingClientRect();
-
+    console.dir(postElement);
+    let postFromTop = position?.y;
+    console.log('post from top: ', postFromTop);
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
+    console.log('scroll pos:',scrollTop);
     let x = position?.x! - 210;
     if (isUser) { x += 50 }
+    let pageBottomUpdateTop = {};
+
+    if (bodyElHeight && (scrollTop === 0 || scrollTop) && postFromTop) {
+      let room = bodyElHeight - scrollTop - postFromTop ;
+      if (room < 250) {
+        pageBottomUpdateTop = {top: bodyElHeight - 250};
+      }
+    }
 
     let y = position?.y! + 25 + scrollTop;
 
@@ -92,7 +108,7 @@ const Post = (props: Props) => {
 
     return (
       <GenericModal className={'options-modal'} backdropOnClick={showOptionsModalHandler} styles={{ backdropStyles: { position: 'absolute', top: 0, left: 0, height: '100vh', width: '100vw', backgroundColor: 'rgba(0,0,0,0)' } }}>
-        <div className={styles.TweetEditModal} style={{ position: 'absolute', top: top, left: left, width: 'fit-content', margin: 'auto' }}>
+        <div className={styles.TweetEditModal} style={{...{ position: 'absolute', top: top, left: left, width: 'fit-content', margin: 'auto' },...pageBottomUpdateTop}}>
           {optionsModalContent}
         </div>
       </GenericModal>);
@@ -104,7 +120,7 @@ const Post = (props: Props) => {
 
     return (
       <GenericModal className={'edit'} backdropOnClick={editPostBackdropToggleHandler} styles={{ backdropStyles: { zIndex: '2', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'absolute', top: 0, left: 0, height: '100vh', width: '100vw', backgroundColor: 'rgba(0,0,0,0.5)' } }}>
-        <div style={{ backgroundColor: 'white', borderRadius: '10px', position: 'absolute', top: top, left: 'center' }} key={post.id}>
+        <div style={{ width: '565px', backgroundColor: 'white', borderRadius: '10px', position: 'absolute', top: top, left: 'center' }} key={post.id}>
           <div className={styles.Post} style={{ border: 'none' }}>
             <img className={styles.Avatar} src={post.image} alt="avatar" />
             <div className={styles.PostBody}>
@@ -116,7 +132,7 @@ const Post = (props: Props) => {
                 </div>
                 <svg id={String(post.id)} viewBox="0 0 24 24" onClick={() => { }} className={styles.DownArrow}><g><path d="M20.207 8.147c-.39-.39-1.023-.39-1.414 0L12 14.94 5.207 8.147c-.39-.39-1.023-.39-1.414 0-.39.39-.39 1.023 0 1.414l7.5 7.5c.195.196.45.294.707.294s.512-.098.707-.293l7.5-7.5c.39-.39.39-1.022 0-1.413z"></path></g></svg>
               </div>
-              <textarea className={styles.PostContent}>{post.tweetText}</textarea>
+              <textarea style={{height: '100px'}} className={styles.PostContent}>{post.tweetText}</textarea>
             </div>
           </div>
           <div className={styles.EditControls}>

@@ -3,6 +3,7 @@ import React from 'react';
 const Backdrop: React.FC<{ onClick: any, styles: any, className: any }> = (props) => {
   let height = document.getElementById('root')?.clientHeight
   
+  // hacky fix for absolute modal pushing past the bottom of the body
   height = height? height + 100 : height;
 
   return (

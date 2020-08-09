@@ -36,7 +36,7 @@ class Home extends Component<Props, State> {
             userName: 'Jason Nelson',
             handle: '@json_nlson',
             date: new Date(),
-            tweetText: 'Hello World!!!!1',
+            tweetText: 'Hello World!!!!1adahlskdhjfalksjdhflkajshdflkjahsdkfjhaskdjhflakshjdlfkjhasldkhjfalksdhflkahsdlfkjhasdlkfjhaksdjhflaksjhdflkajhslkdjhfaksjdhflkahsdlfkhaslkdhfalkdhjsaflkjshdkl',
             image: 'default_profile_normal.png',
             retweetCount: 5,
             favoritesCount: 14,
@@ -103,7 +103,7 @@ class Home extends Component<Props, State> {
         return twt.id === Number(post.id);
       });
       return tweet;
-      
+
       // toggle the editTweetModal
     };
 
