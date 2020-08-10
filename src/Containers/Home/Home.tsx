@@ -40,7 +40,9 @@ class Home extends Component<Props, State> {
             image: 'default_profile_normal.png',
             retweetCount: 5,
             favoritesCount: 14,
-            replies: []
+            replies: [],
+            tweetVersion: 1,
+            tweetVersions: [{id: 1, userId: 1, isRetweet: false, userName: 'Jason Nelson', handle: '@json_nlson', date: new Date(), tweetText: 'Hello World!!!!1adahlskdhjfalksjdhflkajshdflkjahsdkfjhaskdjhflakshjdlfkjhasldkhjfalksdhflkahsdlfkjhasdlkfjhaksdjhflaksjhdflkajhslkdjhfaksjdhflkahsdlfkhaslkdhfalkdhjsaflkjshdkl', image: 'default_profile_normal.png', retweetCount: 5, favoritesCount: 14, replies: [], tweetVersion: 1, tweetVersions: []}]
           },
           {
             id: 2,
@@ -54,7 +56,9 @@ class Home extends Component<Props, State> {
             image: 'burr_profile_avatar.jpeg',
             retweetCount: 5,
             favoritesCount: 14,
-            replies: []
+            replies: [],
+            tweetVersion: 1,
+            tweetVersions: []
           }
         ]
       );
@@ -79,7 +83,8 @@ class Home extends Component<Props, State> {
       retweetCount: Math.floor((Math.random() * 50)),
       favoritesCount: Math.floor((Math.random() * 150)),
       replies: [],
-      tweetVersion: 1
+      tweetVersion: 1,
+      tweetVersions: []
     };
 
     let tweetCopy = { ...newTweet }
@@ -97,17 +102,30 @@ class Home extends Component<Props, State> {
     this.setState({ tweetInputValue: event.target.value });
   }
 
-  editTweetModalHandler = (post: Post) => {
+  editTweetModalHandler = (post: Post, setEditShow: any) => {
     const editTwtHandler =  (event: any) => {
-      let tweet = this.state.tweets.find((twt: any) => {
-        return twt.id === Number(post.id);
+      event.preventDefault();
+
+      let updatedTweets = this.state.tweets.map((twt: any) => {
+        if(twt.id === Number(post.id)) {
+          let newTweetMessage = event.target.elements[0].value;
+          
+          let newTweet = {...post, tweetText: newTweetMessage, tweetVersion: (post.tweetVersion + 1)}
+          newTweet.date = new Date();
+
+          let versionsArr: Post[] = [...post.tweetVersions, newTweet]
+          console.log(versionsArr);
+          newTweet.tweetVersions = versionsArr;
+          
+          return newTweet
+        }
+
+        return twt;
       });
-      return tweet;
 
-      // toggle the editTweetModal
+      this.setState({tweets: updatedTweets});
+      setEditShow(false);
     };
-
-    editTwtHandler.bind(this);
 
     return editTwtHandler;
   };
