@@ -110,11 +110,9 @@ class Home extends Component<Props, State> {
         if(twt.id === Number(post.id)) {
           let newTweetMessage = event.target.elements[0].value;
           
-          let newTweet = {...post, tweetText: newTweetMessage, tweetVersion: (post.tweetVersion + 1)}
-          newTweet.date = new Date();
-
+          let newTweet = {...post, tweetText: newTweetMessage, tweetVersion: (post.tweetVersion + 1), date: new Date()}
           let versionsArr: Post[] = [...post.tweetVersions, newTweet]
-          console.log(versionsArr);
+          
           newTweet.tweetVersions = versionsArr;
           
           return newTweet

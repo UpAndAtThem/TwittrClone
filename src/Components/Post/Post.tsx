@@ -142,7 +142,6 @@ const Post = (props: Props) => {
     )
   }
 
-
   return (
     <div id="Post" ref={postRef} key={post.id} className={styles.Post}>
       <img className={styles.Avatar} src={post.image} alt="avatar" />
@@ -160,8 +159,8 @@ const Post = (props: Props) => {
           <PostController></PostController>
         </div>
       </div>
-      {editClicked ? editModal() : null}
-      {showOptionsModal ? optionsModal() : null}
+      {editClicked && editModal()}
+      {showOptionsModal && optionsModal()}
     </div>
   );
 }
