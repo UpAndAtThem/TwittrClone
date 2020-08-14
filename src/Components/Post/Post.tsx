@@ -116,8 +116,6 @@ const Post = (props: Props) => {
 
     let editModalFromTop = scrollTop + (screenClientHeight / 2) - 200;
 
-
-
     return (
       <GenericModal className={'edit'} backdropOnClick={editPostBackdropToggleHandler} styles={{ backdropStyles: { zIndex: '2', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'absolute', top: 0, left: 0, height: '100vh', width: '100vw', backgroundColor: 'rgba(0,0,0,0.5)' } }}>
         <div style={{ width: '565px', backgroundColor: 'white', borderRadius: '10px', position: 'absolute', top: editModalFromTop, left: 'center' }} key={post.id}>
@@ -160,7 +158,7 @@ const Post = (props: Props) => {
         </div>
         <p className={styles.PostContent}>{post.tweetText}</p>
         <div className={styles.PostController}>
-          <PostController></PostController>
+          <PostController post={post} postRef={postRef}></PostController>
         </div>
       </div>
       {editClicked && editModal()}
