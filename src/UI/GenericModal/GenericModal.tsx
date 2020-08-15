@@ -19,7 +19,6 @@ class GenericModal extends React.Component<Props> {
   constructor(props: any) {
     super(props);
     this.el = document.createElement('div');
-    this.el.className += styles.Modal;
   }
 
   componentDidMount() {
