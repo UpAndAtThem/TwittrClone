@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import GenericModalBackdrop from './GenericModalBackdrop/GenericModalBackdrop';
+import styles from './GenericModal.module.css';
 
 const modalRoot: any = document.getElementById('modal-root');
 
@@ -18,6 +19,7 @@ class GenericModal extends React.Component<Props> {
   constructor(props: any) {
     super(props);
     this.el = document.createElement('div');
+    this.el.className += styles.Modal;
   }
 
   componentDidMount() {
