@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import GenericModalBackdrop from './GenericModalBackdrop/GenericModalBackdrop';
-import styles from './GenericModal.module.css';
 
 const modalRoot: any = document.getElementById('modal-root');
 

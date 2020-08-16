@@ -4,10 +4,10 @@ const Backdrop: React.FC<{ onClick: any, styles: any, className: any }> = (props
   let height = document.getElementById('root')?.clientHeight
   
   // hacky fix for absolute modal pushing past the bottom of the body
-  height = height? height + 100 : height;
+  // height = height? height + 100 : height;
 
   return (
-    <div className={props.className} style={{...props.styles, height: height }} onClick={props.onClick}>
+    <div className={props.className} style={{...props.styles, height: (height? height - 1: height)}} onClick={props.onClick}>
       {props.children}
     </div>
   );
