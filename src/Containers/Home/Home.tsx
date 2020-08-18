@@ -97,7 +97,6 @@ class Home extends Component<Props, State> {
     return null;
   };
 
-
   onChangeTweetInput = (event: any) => {
     this.setState({ tweetInputValue: event.target.value });
   }
@@ -128,6 +127,12 @@ class Home extends Component<Props, State> {
     return editTwtHandler;
   };
 
+  setRetweet = (post: any, retweetMessage = null) => {
+    return (event: any) => {
+      console.log(post);
+    };
+  };
+
 
   render() {
     // console.log('Home Component Renders');
@@ -143,6 +148,7 @@ class Home extends Component<Props, State> {
           user={this.props.user}
           posts={this.state.tweets}
           editTweetModalHandler={this.editTweetModalHandler}
+          setRetweet={this.setRetweet}
         />
       </div>
     );

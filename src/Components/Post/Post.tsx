@@ -9,6 +9,7 @@ interface Props {
   post: PostInterface;
   editTweetModalHandler: any;
   user: User;
+  setRetweet: any;
 }
 
 const Post = (props: Props) => {
@@ -158,7 +159,7 @@ const Post = (props: Props) => {
         </div>
         <p className={styles.PostContent}>{post.tweetText}</p>
         <div className={styles.PostController}>
-          <PostController post={post} postRef={postRef}></PostController>
+          <PostController setRetweet={props.setRetweet} post={post} postRef={postRef}></PostController>
         </div>
       </div>
       {editClicked && editModal()}

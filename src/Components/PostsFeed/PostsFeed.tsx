@@ -9,13 +9,14 @@ interface Props {
   user: User;
   posts: PostInterface[];
   editTweetModalHandler: any;
+  setRetweet: any;
 };
 
 const PostsFeed: React.FC<Props> = (props: Props) => {
   // console.log('PostsFeed Renders');
 
   let JSXPosts = props.posts.map((post: PostInterface) => {
-    return (<Post user={props.user} key={post.id} post={post} editTweetModalHandler={props.editTweetModalHandler}></Post>);
+    return (<Post setRetweet={props.setRetweet} user={props.user} key={post.id} post={post} editTweetModalHandler={props.editTweetModalHandler}></Post>);
   });
   
   return (
